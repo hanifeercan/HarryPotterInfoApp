@@ -1,11 +1,16 @@
 package com.hercan.harrypotterinfoapp.viewmodule
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
 import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.utils.Status
+import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
+import com.hercan.harrypotterinfoapp.presentation.model.toCharacterUIModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onCompletion
@@ -20,6 +25,15 @@ class HomeViewModel @Inject constructor(
 ) :
     ViewModel() {
 
+    private val _characters = MutableLiveData<List<CharacterUIModel>?>()
+    val characters: LiveData<List<CharacterUIModel>?> = _characters
+
+    private val _isOnLoadingCharacters: MutableLiveData<Boolean> = MutableLiveData()
+    val isOnLoadingCharacters: LiveData<Boolean> = _isOnLoadingCharacters
+
+    private val _isOnErrorCharacters: MutableLiveData<String?> = MutableLiveData(null)
+    val isOnErrorCharacters: LiveData<String?> = _isOnErrorCharacters
+
     init {
         getCharacters()
         getPotions()
@@ -30,16 +44,17 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllCharacters()
                 .onStart {
-                    Log.d("charactersData", "onStart")
+                    _isOnLoadingCharacters.postValue(true)
                 }
                 .onCompletion {
-                    Log.d("charactersData", "onCompletion")
+                    _isOnLoadingCharacters.postValue(false)
                 }
                 .collect {
                     if (it.status == Status.SUCCESS) {
-                        Log.d("charactersData", it.data.toString())
+                        val characters = it.data?.map(CharacterModel::toCharacterUIModel)
+                        _characters.postValue(characters)
                     } else {
-                        Log.e("charactersData", it.message.toString())
+                        _isOnErrorCharacters.postValue(it.message)
                     }
                 }
         }
