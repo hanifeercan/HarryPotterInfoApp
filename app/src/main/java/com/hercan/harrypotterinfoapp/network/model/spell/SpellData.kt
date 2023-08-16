@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SpellData(
     @SerializedName("attributes")
-    val attributes: SpellModel.Data.Attributes?,
+    val attributes: Attributes?,
     @SerializedName("id")
     val id: String?,
     @SerializedName("type")
