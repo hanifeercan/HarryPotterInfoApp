@@ -3,12 +3,12 @@ package com.hercan.harrypotterinfoapp.network.utils
 import retrofit2.Response
 
 abstract class NetworkExt {
-    suspend fun <T> safeApiCall(call: suspend () -> Response<List<T>>): Resource<List<T>> {
+    suspend fun <T> safeApiCall(call: suspend () -> Response<T>): Resource<T> {
         try {
             val response = call.invoke()
             if (response.isSuccessful) {
                 val body = response.body()
-                if (!body.isNullOrEmpty()) {
+                if (body != null) {
                     return Resource.success(body)
                 } else {
                     return Resource.error(
