@@ -12,4 +12,8 @@
     <string name="hogwarts_stuff">Hogwarts stuff</string>
     <string name="not_a_student_or_stuff">Not a student or stuff</string>
 
+    <!-- Character RecyclerView Item-->
+    <string name="type">Type</string>
+    <string name="character_name">CHARACTER NAME </string>
+
 </resources>
