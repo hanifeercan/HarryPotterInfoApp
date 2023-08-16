@@ -2,4 +2,14 @@
     <string name="app_name">HarryPotterInfoApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Character UI Data Class-->
+    <string name="wizard">Wizard</string>
+    <string name="squib">Squib</string>
+    <string name="muggle">Muggle</string>
+    <string name="animal">Animal</string>
+    <string name="hogwarts_student">Hogwarts student</string>
+    <string name="hogwarts_stuff">Hogwarts stuff</string>
+    <string name="not_a_student_or_stuff">Not a student or stuff</string>
+
 </resources>

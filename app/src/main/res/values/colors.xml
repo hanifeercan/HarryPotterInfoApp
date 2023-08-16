@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bg_main">#969799</color>
+
+    <!-- Houses background color-->
+    <color name="gryffindor_red">#951f12</color>
+    <color name="ravenclaw_blue">#044384</color>
+    <color name="slytherin_green">#046404</color>
+    <color name="hufflepuff_yellow">#EBB80A</color>
+
 </resources>
