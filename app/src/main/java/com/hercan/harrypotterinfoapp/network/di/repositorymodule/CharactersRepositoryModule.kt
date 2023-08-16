@@ -1,8 +1,8 @@
 package com.hercan.harrypotterinfoapp.network.di.repositorymodule
 
 import com.hercan.harrypotterinfoapp.network.datasource.characters.CharactersDataSourceImpl
-import com.hercan.harrypotterinfoapp.network.repository.CharactersRepository
-import com.hercan.harrypotterinfoapp.network.repository.CharactersRepositoryImpl
+import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepository
+import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
