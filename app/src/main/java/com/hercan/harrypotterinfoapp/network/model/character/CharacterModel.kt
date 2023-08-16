@@ -1,4 +1,4 @@
-package com.hercan.harrypotterinfoapp.network.model
+package com.hercan.harrypotterinfoapp.network.model.character
 
 import com.google.gson.annotations.SerializedName
 

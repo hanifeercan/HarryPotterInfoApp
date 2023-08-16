@@ -1,7 +1,7 @@
 package com.hercan.harrypotterinfoapp.network.datasource.characters
 
 import com.hercan.harrypotterinfoapp.network.api.CharactersApi
-import com.hercan.harrypotterinfoapp.network.model.CharacterModel
+import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
 import retrofit2.Response
 import javax.inject.Inject
 

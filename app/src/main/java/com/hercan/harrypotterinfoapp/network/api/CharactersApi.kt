@@ -1,6 +1,6 @@
 package com.hercan.harrypotterinfoapp.network.api
 
-import com.hercan.harrypotterinfoapp.network.model.CharacterModel
+import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
 import retrofit2.Response
 import retrofit2.http.GET
 
