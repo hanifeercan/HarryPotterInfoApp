@@ -1,7 +1,7 @@
 package com.hercan.harrypotterinfoapp.network.datasource.potterdb
 
 import com.hercan.harrypotterinfoapp.network.api.PotterDBApi
-import com.hercan.harrypotterinfoapp.network.model.PotionModel
+import com.hercan.harrypotterinfoapp.network.model.potion.PotionModel
 import retrofit2.Response
 import javax.inject.Inject
 
