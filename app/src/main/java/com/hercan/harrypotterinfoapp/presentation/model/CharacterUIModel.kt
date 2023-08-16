@@ -1,4 +1,4 @@
-package com.hercan.presentation.model
+package com.hercan.harrypotterinfoapp.presentation.model
 
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
