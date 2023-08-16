@@ -23,6 +23,7 @@ class HomeViewModel @Inject constructor(
     init {
         getCharacters()
         getPotions()
+        getSpells()
     }
 
     fun getCharacters() {
@@ -58,6 +59,25 @@ class HomeViewModel @Inject constructor(
                         Log.d("potionsData", it.data.toString())
                     } else {
                         Log.e("potionsData", it.message.toString())
+                    }
+                }
+        }
+    }
+
+    fun getSpells() {
+        viewModelScope.launch(Dispatchers.IO) {
+            potterRepository.getAllSpells()
+                .onStart {
+                    Log.d("spellsData", "onStart")
+                }
+                .onCompletion {
+                    Log.d("spellsData", "onCompletion")
+                }
+                .collect {
+                    if (it.status == Status.SUCCESS) {
+                        Log.d("spellsData", it.data.toString())
+                    } else {
+                        Log.e("spellsData", it.message.toString())
                     }
                 }
         }
