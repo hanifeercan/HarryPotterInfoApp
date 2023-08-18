@@ -16,4 +16,7 @@
     <string name="type">Type</string>
     <string name="character_name">CHARACTER NAME </string>
 
+    <!-- PotterDB Item-->
+    <string name="name">NAME</string>
+
 </resources>

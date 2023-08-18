@@ -6,6 +6,7 @@
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_24">24dp</dimen>
     <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_108">108dp</dimen>
 
     <dimen name="size_24">24dp</dimen>
     <dimen name="size_48">48dp</dimen>
