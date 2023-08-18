@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
+import com.hercan.harrypotterinfoapp.network.model.potion.PotionData
 import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.utils.Status
@@ -64,16 +65,17 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             potterRepository.getAllPotions()
                 .onStart {
-                    Log.d("potionsData", "onStart")
+                    _isOnLoadingPotions.postValue(true)
                 }
                 .onCompletion {
-                    Log.d("potionsData", "onCompletion")
+                    _isOnLoadingPotions.postValue(false)
                 }
                 .collect {
                     if (it.status == Status.SUCCESS) {
-                        Log.d("potionsData", it.data.toString())
+                        val potions = it.data?.data?.map(PotionData?::toPotionUIModel)
+                        _potions.postValue(potions)
                     } else {
-                        Log.e("potionsData", it.message.toString())
+                        _isOnErrorPotions.postValue(it.message)
                     }
                 }
         }
