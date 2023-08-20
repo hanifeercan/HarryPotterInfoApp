@@ -12,7 +12,6 @@ import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBReposit
 import com.hercan.harrypotterinfoapp.network.utils.Status
 import com.hercan.harrypotterinfoapp.presentation.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -59,7 +58,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getCharacters() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.getAllCharacters()
                 .onStart {
                     _isOnLoadingCharacters.postValue(true)
@@ -79,7 +78,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getPotions() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             potterRepository.getAllPotions()
                 .onStart {
                     _isOnLoadingPotions.postValue(true)
@@ -99,7 +98,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getSpells() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             potterRepository.getAllSpells()
                 .onStart {
                     _isOnLoadingSpells.postValue(true)
