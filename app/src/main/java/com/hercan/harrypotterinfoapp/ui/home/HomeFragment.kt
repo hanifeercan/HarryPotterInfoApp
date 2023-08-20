@@ -11,8 +11,8 @@ import com.hercan.harrypotterinfoapp.databinding.FragmentHomeBinding
 import com.hercan.harrypotterinfoapp.presentation.adapter.CharactersAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.PotionsAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.SpellsAdapter
+import com.hercan.harrypotterinfoapp.presentation.viewbinding.viewBinding
 import com.hercan.harrypotterinfoapp.viewmodule.HomeViewModel
-import com.hercan.weatherapp2.presentation.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

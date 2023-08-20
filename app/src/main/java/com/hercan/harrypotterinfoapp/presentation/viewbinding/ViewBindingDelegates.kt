@@ -1,4 +1,4 @@
-package com.hercan.weatherapp2.presentation.viewbinding
+package com.hercan.harrypotterinfoapp.presentation.viewbinding
 
 import android.view.LayoutInflater
 import android.view.View
