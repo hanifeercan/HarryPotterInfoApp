@@ -70,9 +70,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorCharacters.observe(viewLifecycleOwner) {
-            if (it != null) {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
 
         viewModel.potions.observe(viewLifecycleOwner) {
@@ -90,9 +88,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorPotions.observe(viewLifecycleOwner) {
-            if (it != null) {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
 
         viewModel.spells.observe(viewLifecycleOwner) {
@@ -110,9 +106,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorSpells.observe(viewLifecycleOwner) {
-            if (it != null) {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
     }
 }

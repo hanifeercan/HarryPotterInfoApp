@@ -12,6 +12,7 @@ import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBReposit
 import com.hercan.harrypotterinfoapp.network.utils.Status
 import com.hercan.harrypotterinfoapp.presentation.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -30,8 +31,8 @@ class HomeViewModel @Inject constructor(
     private val _isOnLoadingCharacters: MutableLiveData<Boolean> = MutableLiveData()
     val isOnLoadingCharacters: LiveData<Boolean> = _isOnLoadingCharacters
 
-    private val _isOnErrorCharacters: MutableLiveData<String?> = MutableLiveData(null)
-    val isOnErrorCharacters: LiveData<String?> = _isOnErrorCharacters
+    private val _isOnErrorCharacters: MutableLiveData<String> = MutableLiveData()
+    val isOnErrorCharacters: LiveData<String> = _isOnErrorCharacters
 
     private val _potions = MutableLiveData<List<PotionUIModel?>?>()
     val potions: LiveData<List<PotionUIModel?>?> = _potions
@@ -39,8 +40,8 @@ class HomeViewModel @Inject constructor(
     private val _isOnLoadingPotions: MutableLiveData<Boolean> = MutableLiveData()
     val isOnLoadingPotions: LiveData<Boolean> = _isOnLoadingPotions
 
-    private val _isOnErrorPotions: MutableLiveData<String?> = MutableLiveData(null)
-    val isOnErrorPotions: LiveData<String?> = _isOnErrorPotions
+    private val _isOnErrorPotions: MutableLiveData<String> = MutableLiveData()
+    val isOnErrorPotions: LiveData<String> = _isOnErrorPotions
 
     private val _spells = MutableLiveData<List<SpellUIModel?>?>()
     val spells: LiveData<List<SpellUIModel?>?> = _spells
@@ -48,8 +49,8 @@ class HomeViewModel @Inject constructor(
     private val _isOnLoadingSpells: MutableLiveData<Boolean> = MutableLiveData()
     val isOnLoadingSpells: LiveData<Boolean> = _isOnLoadingSpells
 
-    private val _isOnErrorSpells: MutableLiveData<String?> = MutableLiveData(null)
-    val isOnErrorSpells: LiveData<String?> = _isOnErrorSpells
+    private val _isOnErrorSpells: MutableLiveData<String> = MutableLiveData()
+    val isOnErrorSpells: LiveData<String> = _isOnErrorSpells
 
     init {
         getCharacters()
@@ -65,13 +66,13 @@ class HomeViewModel @Inject constructor(
                 }
                 .onCompletion {
                     _isOnLoadingCharacters.postValue(false)
+                }.catch {
+                    _isOnErrorCharacters.postValue(it.localizedMessage)
                 }
                 .collect {
                     if (it.status == Status.SUCCESS) {
                         val characters = it.data?.map(CharacterModel::toCharacterUIModel)
                         _characters.postValue(characters)
-                    } else {
-                        _isOnErrorCharacters.postValue(it.message)
                     }
                 }
         }
@@ -86,12 +87,13 @@ class HomeViewModel @Inject constructor(
                 .onCompletion {
                     _isOnLoadingPotions.postValue(false)
                 }
+                .catch {
+                    _isOnErrorPotions.postValue(it.localizedMessage)
+                }
                 .collect {
                     if (it.status == Status.SUCCESS) {
                         val potions = it.data?.data?.map(PotionData?::toPotionUIModel)
                         _potions.postValue(potions)
-                    } else {
-                        _isOnErrorPotions.postValue(it.message)
                     }
                 }
         }
@@ -106,12 +108,13 @@ class HomeViewModel @Inject constructor(
                 .onCompletion {
                     _isOnLoadingSpells.postValue(false)
                 }
+                .catch {
+                    _isOnErrorSpells.postValue(it.localizedMessage)
+                }
                 .collect {
                     if (it.status == Status.SUCCESS) {
                         val spells = it.data?.data?.map(SpellData?::toSpellUIModel)
                         _spells.postValue(spells)
-                    } else {
-                        _isOnErrorSpells.postValue(it.message)
                     }
                 }
         }
