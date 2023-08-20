@@ -1,17 +1,16 @@
 package com.hercan.harrypotterinfoapp.viewmodule
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
 import com.hercan.harrypotterinfoapp.network.model.potion.PotionData
+import com.hercan.harrypotterinfoapp.network.model.spell.SpellData
 import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.utils.Status
-import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
-import com.hercan.harrypotterinfoapp.presentation.model.toCharacterUIModel
+import com.hercan.harrypotterinfoapp.presentation.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onCompletion
@@ -34,6 +33,24 @@ class HomeViewModel @Inject constructor(
 
     private val _isOnErrorCharacters: MutableLiveData<String?> = MutableLiveData(null)
     val isOnErrorCharacters: LiveData<String?> = _isOnErrorCharacters
+
+    private val _potions = MutableLiveData<List<PotionUIModel?>?>()
+    val potions: LiveData<List<PotionUIModel?>?> = _potions
+
+    private val _isOnLoadingPotions: MutableLiveData<Boolean> = MutableLiveData()
+    val isOnLoadingPotions: LiveData<Boolean> = _isOnLoadingPotions
+
+    private val _isOnErrorPotions: MutableLiveData<String?> = MutableLiveData(null)
+    val isOnErrorPotions: LiveData<String?> = _isOnErrorPotions
+
+    private val _spells = MutableLiveData<List<SpellUIModel?>?>()
+    val spells: LiveData<List<SpellUIModel?>?> = _spells
+
+    private val _isOnLoadingSpells: MutableLiveData<Boolean> = MutableLiveData()
+    val isOnLoadingSpells: LiveData<Boolean> = _isOnLoadingSpells
+
+    private val _isOnErrorSpells: MutableLiveData<String?> = MutableLiveData(null)
+    val isOnErrorSpells: LiveData<String?> = _isOnErrorSpells
 
     init {
         getCharacters()
@@ -85,16 +102,17 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             potterRepository.getAllSpells()
                 .onStart {
-                    Log.d("spellsData", "onStart")
+                    _isOnLoadingSpells.postValue(true)
                 }
                 .onCompletion {
-                    Log.d("spellsData", "onCompletion")
+                    _isOnLoadingSpells.postValue(false)
                 }
                 .collect {
                     if (it.status == Status.SUCCESS) {
-                        Log.d("spellsData", it.data.toString())
+                        val spells = it.data?.data?.map(SpellData?::toSpellUIModel)
+                        _spells.postValue(spells)
                     } else {
-                        Log.e("spellsData", it.message.toString())
+                        _isOnErrorSpells.postValue(it.message)
                     }
                 }
         }
