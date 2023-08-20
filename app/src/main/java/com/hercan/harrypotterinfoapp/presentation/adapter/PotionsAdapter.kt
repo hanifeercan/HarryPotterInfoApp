@@ -1,4 +1,4 @@
-package com.hercan.harrypottercharactersapp.presentation.adapter
+package com.hercan.harrypotterinfoapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
