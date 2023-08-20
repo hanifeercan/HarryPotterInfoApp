@@ -24,4 +24,11 @@
     <string name="potions">POTIONS</string>
     <string name="spells">SPELLS</string>
 
+    <!-- Image Content Descriptions-->
+    <string name="ic_harry_potter">Harry Potter icon</string>
+    <string name="iv_character_photo">Character photo</string>
+    <string name="ic_live_or_dead">Character is live or dead information</string>
+    <string name="ic_house">Character house information</string>
+    <string name="iv_spell_or_potion_photo">Spell or potion photo</string>
+
 </resources>
