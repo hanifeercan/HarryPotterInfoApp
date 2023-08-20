@@ -8,14 +8,14 @@ import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
 
 data class CharacterUIModel(
     val id: String?,
-    val actorName: String?,
+    val actorName: String,
     @DrawableRes
     val aliveId: Int,
     val alternateNames: String?,
     @StringRes
     val typeId: Int,
-    val species: String?,
-    val gender: String?,
+    val species: String,
+    val gender: String,
     @StringRes
     val hogwartsStaffOrStudentId: Int,
     @DrawableRes
@@ -23,15 +23,16 @@ data class CharacterUIModel(
     @ColorRes
     val houseColorId: Int,
     val image: String?,
-    val characterName: String?,
-    val patronus: String?,
-    val wandCore: String?,
+    val characterName: String,
+    val patronus: String,
+    val wandCore: String,
 )
 
 fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
+    val unknown = "Unknown"
     return this.let {
         val id = it.id
-        val actorName = it.actor
+        val actorName = if (it.actor.isNullOrEmpty()) unknown else it.actor
         val aliveId = if (it.alive == true) {
             R.drawable.ic_live
         } else {
@@ -50,15 +51,13 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
                 R.string.animal
             }
         }
-        val species = it.species
-        val gender = it.gender
+        val species = if (it.species.isNullOrEmpty()) unknown else it.species
+        val gender = if (it.gender.isNullOrEmpty()) unknown else it.gender
 
-        val hogwartsStaffOrStudentId = if (it.hogwartsStudent == true) {
-            R.string.hogwarts_student
-        } else if (it.hogwartsStaff == true) {
-            R.string.hogwarts_stuff
-        } else {
-            R.string.not_a_student_or_stuff
+        val hogwartsStaffOrStudentId = when {
+            it.hogwartsStudent == true -> R.string.hogwarts_student
+            it.hogwartsStaff == true -> R.string.hogwarts_stuff
+            else -> R.string.not_a_student_or_stuff
         }
 
         val houseDrawableId = when (it.house) {
@@ -98,9 +97,9 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
         }
 
         val image = if (it.image?.isEmpty() == true) null else it.image
-        val characterName = it.name
-        val patronus = it.patronus
-        val wandCore = it.wand?.core
+        val characterName = if (it.name.isNullOrEmpty()) unknown else it.name
+        val patronus = if (it.patronus.isNullOrEmpty()) unknown else it.patronus
+        val wandCore = if (it.wand?.core.isNullOrEmpty()) unknown else it.wand?.core!!
 
         CharacterUIModel(
             id,

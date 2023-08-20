@@ -18,18 +18,19 @@ data class PotionUIModel(
 )
 
 fun PotionData?.toPotionUIModel(): PotionUIModel? {
+    val unknown = "Unknown"
     return this?.let {
         val id = this.id
-        val characteristics = this.attributes?.characteristics ?: "Unknown"
-        val difficulty = this.attributes?.difficulty ?: "Unknown"
-        val effect = this.attributes?.effect ?: "Unknown"
+        val characteristics = this.attributes?.characteristics ?: unknown
+        val difficulty = this.attributes?.difficulty ?: unknown
+        val effect = this.attributes?.effect ?: unknown
         val image = this.attributes?.image
-        val ingredients = this.attributes?.ingredients ?: "Unknown"
-        val inventors = this.attributes?.inventors ?: "Unknown"
-        val manufacturers = this.attributes?.manufacturers ?: "Unknown"
-        val name = this.attributes?.name ?: "Unknown"
-        val sideEffects = this.attributes?.sideEffects ?: "Unknown"
-        val time = this.attributes?.time ?: "Unknown"
+        val ingredients = this.attributes?.ingredients ?: unknown
+        val inventors = this.attributes?.inventors ?: unknown
+        val manufacturers = this.attributes?.manufacturers ?: unknown
+        val name = this.attributes?.name ?: unknown
+        val sideEffects = this.attributes?.sideEffects ?: unknown
+        val time = this.attributes?.time ?: unknown
         val wiki = this.attributes?.wiki
         return PotionUIModel(
             id,
