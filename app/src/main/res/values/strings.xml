@@ -19,4 +19,9 @@
     <!-- PotterDB Item-->
     <string name="name">NAME</string>
 
+    <!-- Home Fragment -->
+    <string name="characters">CHARACTERS</string>
+    <string name="potions">POTIONS</string>
+    <string name="spells">SPELLS</string>
+
 </resources>

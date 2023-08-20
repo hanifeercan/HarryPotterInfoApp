@@ -15,4 +15,8 @@
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
+    <style name="Text.T3" parent="Text">
+        <item name="android:textSize">@dimen/text_size_24</item>
+    </style>
+
 </resources>
