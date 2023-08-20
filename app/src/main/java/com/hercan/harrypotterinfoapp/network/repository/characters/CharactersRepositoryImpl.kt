@@ -12,10 +12,9 @@ class CharactersRepositoryImpl @Inject constructor(
     private val dataSource: CharactersDataSource,
 ) : NetworkExt(), CharactersRepository {
 
-    override suspend fun getAllCharacters(): Flow<Resource<List<CharacterModel>>> {
+    override fun getAllCharacters(): Flow<Resource<List<CharacterModel>>> {
         return flow {
             emit(safeApiCall { dataSource.getAllCharacters() })
         }
     }
-
 }

@@ -13,13 +13,13 @@ class PotterDBRepositoryImpl @Inject constructor(
     private val dataSource: PotterDBDataSource,
 ) : NetworkExt(), PotterDBRepository {
 
-    override suspend fun getAllPotions(): Flow<Resource<PotionModel>> {
+    override fun getAllPotions(): Flow<Resource<PotionModel>> {
         return flow {
             emit(safeApiCall { dataSource.getAllPotions() })
         }
     }
 
-    override suspend fun getAllSpells(): Flow<Resource<SpellModel>> {
+    override fun getAllSpells(): Flow<Resource<SpellModel>> {
         return flow {
             emit(safeApiCall { dataSource.getAllSpells() })
         }
