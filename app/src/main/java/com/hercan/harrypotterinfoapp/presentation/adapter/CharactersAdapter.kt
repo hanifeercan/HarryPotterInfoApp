@@ -1,4 +1,4 @@
-package com.hercan.harrypottercharactersapp.presentation.adapter
+package com.hercan.harrypotterinfoapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,7 +21,7 @@ class CharactersAdapter :
         fun bind(item: CharacterUIModel) = with(binding) {
 
             setIsRecyclable(false)
-            tvName.text = item.characterName ?: "-"
+            tvName.text = item.characterName
             tvType.text = root.context.getString(item.typeId)
             icHouse.background = AppCompatResources.getDrawable(root.context, item.houseDrawableId)
             icLiveOrDead.background = AppCompatResources.getDrawable(root.context, item.aliveId)
