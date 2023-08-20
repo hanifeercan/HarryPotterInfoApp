@@ -15,6 +15,6 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
 
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(SplashScreenFragmentDirections.navigateToHomeFragment())
-        }, 5000)
+        }, 3500)
     }
 }
