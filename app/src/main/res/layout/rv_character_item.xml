@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingEnd="@dimen/margin_32">
+    android:paddingEnd="@dimen/margin_32"
+    tools:ignore="RtlSymmetry">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/size_300"
@@ -19,6 +21,7 @@
             android:id="@+id/iv_photo"
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_100"
+            android:contentDescription="@string/iv_character_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,6 +42,7 @@
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
             android:layout_marginStart="@dimen/margin_32"
+            android:contentDescription="@string/ic_live_or_dead"
             app:layout_constraintBottom_toBottomOf="@id/tv_type"
             app:layout_constraintEnd_toStartOf="@id/tv_type"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -64,6 +68,7 @@
         android:layout_height="@dimen/size_48"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/margin_16"
+        android:contentDescription="@string/ic_house"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
