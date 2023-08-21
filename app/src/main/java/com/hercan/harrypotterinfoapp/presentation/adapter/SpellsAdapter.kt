@@ -24,8 +24,6 @@ class SpellsAdapter :
 
             Picasso.get()
                 .load(item.image)
-                .resize(100, 100)
-                .centerCrop()
                 .error(R.drawable.iv_default_spell_photo)
                 .placeholder(R.drawable.iv_default_spell_photo)
                 .into(ivPhoto)

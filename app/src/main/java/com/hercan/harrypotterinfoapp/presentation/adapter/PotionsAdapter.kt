@@ -24,8 +24,6 @@ class PotionsAdapter :
 
             Picasso.get()
                 .load(item.image)
-                .resize(100, 100)
-                .centerCrop()
                 .error(R.drawable.iv_default_potion_photo)
                 .placeholder(R.drawable.iv_default_potion_photo)
                 .into(ivPhoto)
