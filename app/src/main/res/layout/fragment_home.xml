@@ -8,7 +8,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <ImageView
-        android:id="@+id/ic_harry_potter"
+        android:id="@+id/icHarryPotter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_32"
@@ -28,7 +28,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ic_harry_potter">
+        app:layout_constraintTop_toBottomOf="@id/icHarryPotter">
 
         <TextView
             style="@style/Text.T3"
@@ -41,14 +41,14 @@
             android:layout_height="@dimen/size_132">
 
             <ProgressBar
-                android:id="@+id/progress_bar_character_rv"
+                android:id="@+id/progressBarCharacterRv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_character"
+                android:id="@+id/rvCharacter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -72,20 +72,20 @@
             android:layout_height="@dimen/size_100">
 
             <ProgressBar
-                android:id="@+id/progress_bar_potion_rv"
+                android:id="@+id/progressBarPotionRv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_potion"
+                android:id="@+id/rvPotion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_character"
+                app:layout_constraintTop_toBottomOf="@id/rvCharacter"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_potterdb" />
         </FrameLayout>
@@ -103,20 +103,20 @@
             android:layout_height="@dimen/size_100">
 
             <ProgressBar
-                android:id="@+id/progress_bar_spell_rv"
+                android:id="@+id/progressBarSpellRv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_spell"
+                android:id="@+id/rvSpell"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_potion"
+                app:layout_constraintTop_toBottomOf="@id/rvPotion"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_potterdb" />
         </FrameLayout>
