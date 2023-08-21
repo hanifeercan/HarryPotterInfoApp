@@ -64,6 +64,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 navigateToPotionDetail(it.id)
             }
         }
+
+        spellsAdapter.setItemClickListener {
+            if (it.id != null) {
+                navigateToSpellDetail(it.id)
+            }
+        }
     }
 
     private fun observeViewModelData() = with(binding) {
@@ -132,5 +138,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToPotionDetail(potionID: String) {
         findNavController().navigate(HomeFragmentDirections.navigateToPotionDetailFragment(potionID))
+    }
+
+    private fun navigateToSpellDetail(spellID: String) {
+        findNavController().navigate(HomeFragmentDirections.navigateToSpellDetailFragment(spellID))
     }
 }
