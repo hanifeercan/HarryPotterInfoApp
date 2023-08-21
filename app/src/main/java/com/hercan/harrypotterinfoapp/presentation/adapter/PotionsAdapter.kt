@@ -13,7 +13,9 @@ import com.squareup.picasso.Picasso
 class PotionsAdapter :
     ListAdapter<PotionUIModel, PotionsAdapter.ViewHolder>(DiffCallback) {
 
-    class ViewHolder(
+    private var itemClickListener: ((PotionUIModel) -> Unit)? = null
+
+    inner class ViewHolder(
         private val binding: ItemPotterdbBinding,
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +30,14 @@ class PotionsAdapter :
                 .placeholder(R.drawable.iv_default_potion_photo)
                 .into(ivPhoto)
 
+            root.setOnClickListener {
+                itemClickListener?.invoke(item)
+            }
         }
+    }
+
+    fun setItemClickListener(listener: (PotionUIModel) -> Unit) {
+        this.itemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
