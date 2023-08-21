@@ -13,7 +13,9 @@ import com.squareup.picasso.Picasso
 class SpellsAdapter :
     ListAdapter<SpellUIModel, SpellsAdapter.ViewHolder>(DiffCallback) {
 
-    class ViewHolder(
+    private var itemClickListener: ((SpellUIModel) -> Unit)? = null
+
+    inner class ViewHolder(
         private val binding: ItemPotterdbBinding,
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +30,14 @@ class SpellsAdapter :
                 .placeholder(R.drawable.iv_default_spell_photo)
                 .into(ivPhoto)
 
+            root.setOnClickListener {
+                itemClickListener?.invoke(item)
+            }
         }
+    }
+
+    fun setItemClickListener(listener: (SpellUIModel) -> Unit) {
+        this.itemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
