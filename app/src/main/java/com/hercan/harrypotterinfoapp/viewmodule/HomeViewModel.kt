@@ -58,7 +58,7 @@ class HomeViewModel @Inject constructor(
         getSpells()
     }
 
-    fun getCharacters() {
+    private fun getCharacters() {
         viewModelScope.launch {
             repository.getAllCharacters()
                 .onStart {
@@ -78,7 +78,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getPotions() {
+    private fun getPotions() {
         viewModelScope.launch {
             potterRepository.getAllPotions()
                 .onStart {
@@ -99,7 +99,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getSpells() {
+    private fun getSpells() {
         viewModelScope.launch {
             potterRepository.getAllSpells()
                 .onStart {
