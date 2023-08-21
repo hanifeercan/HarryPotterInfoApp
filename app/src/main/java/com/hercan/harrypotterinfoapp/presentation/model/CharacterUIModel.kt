@@ -6,6 +6,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.hercan.harrypotterinfoapp.R
 import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
+import com.hercan.harrypotterinfoapp.presentation.utils.toFirstCharUpperCase
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -35,7 +36,7 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
     val unknown = "Unknown"
     return this.let {
         val id = it.id
-        val actorName = if (it.actor.isNullOrEmpty()) unknown else it.actor
+        val actorName = if (it.actor.isNullOrEmpty()) unknown else it.actor.toFirstCharUpperCase()
         val aliveId = if (it.alive == true) {
             R.drawable.ic_live
         } else {
@@ -54,8 +55,8 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
                 R.string.animal
             }
         }
-        val species = if (it.species.isNullOrEmpty()) unknown else it.species
-        val gender = if (it.gender.isNullOrEmpty()) unknown else it.gender
+        val species = if (it.species.isNullOrEmpty()) unknown else it.species.toFirstCharUpperCase()
+        val gender = if (it.gender.isNullOrEmpty()) unknown else it.gender.toFirstCharUpperCase()
 
         val hogwartsStaffOrStudentId = when {
             it.hogwartsStudent == true -> R.string.hogwarts_student
@@ -100,9 +101,9 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
         }
 
         val image = if (it.image?.isEmpty() == true) null else it.image
-        val characterName = if (it.name.isNullOrEmpty()) unknown else it.name
-        val patronus = if (it.patronus.isNullOrEmpty()) unknown else it.patronus
-        val wandCore = if (it.wand?.core.isNullOrEmpty()) unknown else it.wand?.core!!
+        val characterName = if (it.name.isNullOrEmpty()) unknown else it.name.toFirstCharUpperCase()
+        val patronus = if (it.patronus.isNullOrEmpty()) unknown else it.patronus.toFirstCharUpperCase()
+        val wandCore = if (it.wand?.core.isNullOrEmpty()) unknown else it.wand?.core!!.toFirstCharUpperCase()
 
         CharacterUIModel(
             id,
