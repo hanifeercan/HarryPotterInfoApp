@@ -58,6 +58,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         charactersAdapter.setItemClickListener {
             navigateToCharacterDetail(it)
         }
+
+        potionsAdapter.setItemClickListener {
+            if (it.id != null) {
+                navigateToPotionDetail(it.id)
+            }
+        }
     }
 
     private fun observeViewModelData() = with(binding) {
@@ -122,5 +128,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 character
             )
         )
+    }
+
+    private fun navigateToPotionDetail(potionID: String) {
+        findNavController().navigate(HomeFragmentDirections.navigateToPotionDetailFragment(potionID))
     }
 }
