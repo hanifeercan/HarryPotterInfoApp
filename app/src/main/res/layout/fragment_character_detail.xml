@@ -183,7 +183,7 @@
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:id="@+id/tvStuff0rStudent"
+                        android:id="@+id/tvStuffOrStudent"
                         style="@style/Text.T1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
