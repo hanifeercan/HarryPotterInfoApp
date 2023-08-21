@@ -22,6 +22,7 @@
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_100"
             android:contentDescription="@string/iv_character_photo"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

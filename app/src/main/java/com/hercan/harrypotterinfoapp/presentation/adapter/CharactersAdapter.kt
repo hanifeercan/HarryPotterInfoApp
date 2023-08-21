@@ -28,8 +28,6 @@ class CharactersAdapter :
 
             Picasso.get()
                 .load(item.image)
-                .resize(100, 100)
-                .centerCrop()
                 .error(R.drawable.iv_default_character_photo)
                 .placeholder(R.drawable.iv_default_character_photo)
                 .into(ivPhoto)
