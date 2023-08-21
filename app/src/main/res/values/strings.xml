@@ -29,4 +29,13 @@
     <string name="ic_house">Character house information</string>
     <string name="iv_spell_or_potion_photo">Spell or potion photo</string>
 
+    <!-- Character Detail Fragment XML -->
+    <string name="alternative_names_header">Alternative Names:</string>
+    <string name="actor_header">Actor:</string>
+    <string name="species_header">Species:</string>
+    <string name="patronus_header">Patronus:</string>
+    <string name="stuff_or_student_header">Stuff or Student:</string>
+    <string name="wand_core_header">Wand Core:</string>
+    <string name="gender_header">Gender:</string>
+
 </resources>
