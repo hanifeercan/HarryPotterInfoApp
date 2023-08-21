@@ -27,6 +27,9 @@
         <action
             android:id="@+id/navigateToPotionDetailFragment"
             app:destination="@id/potionDetailFragment" />
+        <action
+            android:id="@+id/navigateToSpellDetailFragment"
+            app:destination="@id/spellDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
@@ -44,6 +47,15 @@
         tools:layout="@layout/fragment_potion_detail">
         <argument
             android:name="potionID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/spellDetailFragment"
+        android:name="com.hercan.harrypotterinfoapp.ui.detail.SpellDetailFragment"
+        android:label="fragment_spell_detail"
+        tools:layout="@layout/fragment_spell_detail">
+        <argument
+            android:name="spellID"
             app:argType="string" />
     </fragment>
 </navigation>
