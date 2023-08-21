@@ -1,11 +1,14 @@
 package com.hercan.harrypotterinfoapp.presentation.model
 
+import android.os.Parcelable
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.hercan.harrypotterinfoapp.R
 import com.hercan.harrypotterinfoapp.network.model.character.CharacterModel
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class CharacterUIModel(
     val id: String?,
     val actorName: String,
@@ -26,7 +29,7 @@ data class CharacterUIModel(
     val characterName: String,
     val patronus: String,
     val wandCore: String,
-)
+):Parcelable
 
 fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
     val unknown = "Unknown"
