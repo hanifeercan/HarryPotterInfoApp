@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/size_300"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_rv_item"
+        android:background="@drawable/shape_recycler_view_item_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
