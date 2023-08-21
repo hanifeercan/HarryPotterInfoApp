@@ -14,7 +14,9 @@ import com.squareup.picasso.Picasso
 class CharactersAdapter :
     ListAdapter<CharacterUIModel, CharactersAdapter.ViewHolder>(DiffCallback) {
 
-    class ViewHolder(
+    private var itemClickListener: ((CharacterUIModel) -> Unit)? = null
+
+    inner class ViewHolder(
         private val binding: ItemCharacterBinding,
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +34,14 @@ class CharactersAdapter :
                 .placeholder(R.drawable.iv_default_character_photo)
                 .into(ivPhoto)
 
+            root.setOnClickListener {
+                itemClickListener?.invoke(item)
+            }
         }
+    }
+
+    fun setItemClickListener(listener: (CharacterUIModel) -> Unit) {
+        this.itemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
