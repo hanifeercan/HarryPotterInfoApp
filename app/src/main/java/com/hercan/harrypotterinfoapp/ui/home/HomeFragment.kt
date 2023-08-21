@@ -5,12 +5,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hercan.harrypotterinfoapp.R
 import com.hercan.harrypotterinfoapp.databinding.FragmentHomeBinding
 import com.hercan.harrypotterinfoapp.presentation.adapter.CharactersAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.PotionsAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.SpellsAdapter
+import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
 import com.hercan.harrypotterinfoapp.presentation.viewbinding.viewBinding
 import com.hercan.harrypotterinfoapp.viewmodule.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +53,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
             adapter = spellsAdapter
+        }
+
+        charactersAdapter.setItemClickListener {
+            navigateToCharacterDetail(it)
         }
     }
 
@@ -108,5 +114,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.isOnErrorSpells.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun navigateToCharacterDetail(character: CharacterUIModel) {
+        findNavController().navigate(
+            HomeFragmentDirections.navigateToCharacterDetailFragment(
+                character
+            )
+        )
     }
 }
