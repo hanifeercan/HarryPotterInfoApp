@@ -9,16 +9,29 @@
         android:id="@+id/splashScreenFragment"
         android:name="com.hercan.harrypotterinfoapp.ui.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/navigateToHomeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashScreenFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.hercan.harrypotterinfoapp.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/navigateToCharacterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.hercan.harrypotterinfoapp.ui.detail.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        tools:layout="@layout/fragment_character_detail">
+        <argument
+            android:name="characterItem"
+            app:argType="com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel" />
+    </fragment>
 </navigation>
