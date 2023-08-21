@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hercan.harrypotterinfoapp.R
-import com.hercan.harrypotterinfoapp.databinding.RvPotterdbItemBinding
+import com.hercan.harrypotterinfoapp.databinding.ItemPotterdbBinding
 import com.hercan.harrypotterinfoapp.presentation.model.PotionUIModel
 import com.squareup.picasso.Picasso
 
@@ -14,7 +14,7 @@ class PotionsAdapter :
     ListAdapter<PotionUIModel, PotionsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
-        private val binding: RvPotterdbItemBinding,
+        private val binding: ItemPotterdbBinding,
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PotionUIModel) = with(binding) {
@@ -34,7 +34,7 @@ class PotionsAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RvPotterdbItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ItemPotterdbBinding.inflate(LayoutInflater.from(parent.context))
         return ViewHolder(binding)
     }
 

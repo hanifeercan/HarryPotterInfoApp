@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hercan.harrypotterinfoapp.R
-import com.hercan.harrypotterinfoapp.databinding.RvCharacterItemBinding
+import com.hercan.harrypotterinfoapp.databinding.ItemCharacterBinding
 import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
 import com.squareup.picasso.Picasso
 
@@ -15,7 +15,7 @@ class CharactersAdapter :
     ListAdapter<CharacterUIModel, CharactersAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
-        private val binding: RvCharacterItemBinding,
+        private val binding: ItemCharacterBinding,
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CharacterUIModel) = with(binding) {
@@ -38,7 +38,7 @@ class CharactersAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RvCharacterItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ItemCharacterBinding.inflate(LayoutInflater.from(parent.context))
         return ViewHolder(binding)
     }
 
