@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_photo"
+            android:id="@+id/ivPhoto"
             android:layout_width="@dimen/size_100"
             android:layout_height="@dimen/size_100"
             android:contentDescription="@string/iv_character_photo"
@@ -27,31 +27,31 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tvName"
             style="@style/Text.T2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_32"
             android:text="@string/character_name"
-            app:layout_constraintBottom_toTopOf="@id/tv_type"
-            app:layout_constraintStart_toEndOf="@id/iv_photo"
+            app:layout_constraintBottom_toTopOf="@id/tvType"
+            app:layout_constraintStart_toEndOf="@id/ivPhoto"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <ImageView
-            android:id="@+id/ic_live_or_dead"
+            android:id="@+id/icLiveOrDead"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
             android:layout_marginStart="@dimen/margin_32"
             android:contentDescription="@string/ic_live_or_dead"
-            app:layout_constraintBottom_toBottomOf="@id/tv_type"
-            app:layout_constraintEnd_toStartOf="@id/tv_type"
+            app:layout_constraintBottom_toBottomOf="@id/tvType"
+            app:layout_constraintEnd_toStartOf="@id/tvType"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/iv_photo"
-            app:layout_constraintTop_toTopOf="@id/tv_type" />
+            app:layout_constraintStart_toEndOf="@id/ivPhoto"
+            app:layout_constraintTop_toTopOf="@id/tvType" />
 
         <TextView
-            android:id="@+id/tv_type"
+            android:id="@+id/tvType"
             style="@style/Text.T1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,12 +59,12 @@
             android:layout_marginTop="@dimen/margin_8"
             android:text="@string/type"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_live_or_dead"
-            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+            app:layout_constraintStart_toEndOf="@id/icLiveOrDead"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/ic_house"
+        android:id="@+id/icHouse"
         android:layout_width="@dimen/size_48"
         android:layout_height="@dimen/size_48"
         android:layout_alignParentEnd="true"
