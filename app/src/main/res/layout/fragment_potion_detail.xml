@@ -9,7 +9,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingVertical="@dimen/padding_16">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,7 +20,7 @@
                 android:id="@+id/icHarryPotter"
                 android:layout_width="@dimen/size_48"
                 android:layout_height="@dimen/size_48"
-                android:layout_marginVertical="@dimen/margin_16"
+                android:layout_marginBottom="@dimen/margin_16"
                 android:background="@drawable/ic_hp"
                 android:contentDescription="@string/ic_harry_potter"
                 app:layout_constraintBottom_toTopOf="@id/ivPhoto"
@@ -46,6 +47,7 @@
                 android:layout_marginTop="@dimen/margin_8"
                 android:gravity="center"
                 android:text="@string/name"
+                app:layout_constraintBottom_toTopOf="@id/llInventorsAndManufacturers"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
@@ -113,11 +115,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_32"
-                android:layout_marginVertical="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
                 android:background="@drawable/shape_detail_info_item_background"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_16"
-                app:layout_constraintBottom_toTopOf="@id/btnWikipedia"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llInventorsAndManufacturers">
@@ -125,13 +126,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_8">
 
                     <TextView
                         style="@style/Text.T2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="@dimen/padding_8"
+                        android:paddingEnd="@dimen/padding_4"
                         android:text="@string/effect_header"
                         tools:ignore="RtlSymmetry" />
 
@@ -145,7 +147,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
 
                     <TextView
                         style="@style/Text.T2"
@@ -165,7 +168,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
 
                     <TextView
                         style="@style/Text.T2"
@@ -185,7 +189,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
 
                     <TextView
                         style="@style/Text.T2"
@@ -205,7 +210,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
 
                     <TextView
                         style="@style/Text.T2"
@@ -223,17 +229,47 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/llIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/shape_detail_info_item_background"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_16"
+                app:layout_constraintBottom_toTopOf="@id/btnWikipedia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llGeneralInfo">
+
+                <TextView
+                    style="@style/Text.T2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ingredients_header" />
+
+                <TextView
+                    android:id="@+id/tvIngredients"
+                    style="@style/Text.T1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+            </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnWikipedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_32"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_16"
                 android:background="@drawable/shape_detail_info_item_background"
                 android:text="@string/wikipedia"
                 android:textAppearance="@style/Text.T3"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llGeneralInfo" />
+                app:layout_constraintTop_toBottomOf="@id/llIngredients" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
