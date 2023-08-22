@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="bg_main">#969799</color>
     <color name="transparent_white">#50FFFFFF</color>
+    <color name="bg_recycler_view_item">#CACACA</color>
 
     <!-- Houses background color-->
     <color name="gryffindor_red">#951f12</color>
