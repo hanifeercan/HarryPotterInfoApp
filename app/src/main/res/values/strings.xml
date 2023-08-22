@@ -48,4 +48,6 @@
     <string name="time_header">Time:</string>
     <string name="difficulty_header">Difficulty:</string>
     <string name="wikipedia">Wikipedia</string>
+    <string name="ingredients_header">Ingredients:</string>
+
 </resources>
