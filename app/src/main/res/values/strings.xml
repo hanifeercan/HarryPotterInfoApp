@@ -28,6 +28,7 @@
     <string name="ic_live_or_dead">Character is live or dead information</string>
     <string name="ic_house">Character house information</string>
     <string name="iv_spell_or_potion_photo">Spell or potion photo</string>
+    <string name="iv_potion_photo">Potion photo</string>
 
     <!-- Character Detail Fragment XML -->
     <string name="alternative_names_header">Alternative Names:</string>
@@ -38,4 +39,13 @@
     <string name="wand_core_header">Wand Core:</string>
     <string name="gender_header">Gender:</string>
 
+    <!-- Potion Detail Fragment XML -->
+    <string name="inventors_header">Inventors:</string>
+    <string name="manufacturers_header">Manufacturers:</string>
+    <string name="effect_header">Effect:</string>
+    <string name="side_effect_header">Side Effect:</string>
+    <string name="characteristics_header">Characteristics:</string>
+    <string name="time_header">Time:</string>
+    <string name="difficulty_header">Difficulty:</string>
+    <string name="wikipedia">Wikipedia</string>
 </resources>
