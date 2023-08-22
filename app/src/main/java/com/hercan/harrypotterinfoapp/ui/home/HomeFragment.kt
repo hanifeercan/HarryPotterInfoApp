@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.hercan.harrypotterinfoapp.R
 import com.hercan.harrypotterinfoapp.databinding.FragmentHomeBinding
 import com.hercan.harrypotterinfoapp.presentation.adapter.CharactersAdapter
@@ -35,24 +34,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun bindUI() = with(binding) {
         rvCharacter.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
             adapter = charactersAdapter
+            set3DItem(true)
+            setAlpha(true)
+            setInfinite(true)
         }
 
         rvPotion.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
             adapter = potionsAdapter
+            set3DItem(true)
+            setAlpha(true)
+            setInfinite(true)
         }
 
         rvSpell.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
             adapter = spellsAdapter
+            set3DItem(true)
+            setAlpha(true)
+            setInfinite(true)
         }
 
         charactersAdapter.setItemClickListener {
