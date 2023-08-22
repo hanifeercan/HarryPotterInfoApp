@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class Attributes(
     @SerializedName("category")
     val category: String?,
+    @SerializedName("slug")
+    val slug: String?,
     @SerializedName("creator")
     val creator: String?,
     @SerializedName("effect")

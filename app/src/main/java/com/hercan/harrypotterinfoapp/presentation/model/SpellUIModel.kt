@@ -5,6 +5,7 @@ import com.hercan.harrypotterinfoapp.network.model.spell.SpellData
 data class SpellUIModel(
     val id: String?,
     val category: String,
+    val slug: String?,
     val creator: String,
     val effect: String,
     val hand: String,
@@ -20,6 +21,7 @@ fun SpellData?.toSpellUIModel(): SpellUIModel? {
     return this?.let {
         val id = this.id
         val category = this.attributes?.category ?: unknown
+        val slug = this.attributes?.slug
         val creator = this.attributes?.creator ?: unknown
         val effect = this.attributes?.effect ?: unknown
         val hand = this.attributes?.hand ?: unknown
@@ -29,7 +31,7 @@ fun SpellData?.toSpellUIModel(): SpellUIModel? {
         val name = this.attributes?.name ?: unknown
         val wiki = this.attributes?.wiki
         return SpellUIModel(
-            id, category, creator, effect, hand, image, incantation, light, name, wiki
+            id, category, slug, creator, effect, hand, image, incantation, light, name, wiki
         )
     }
 }
