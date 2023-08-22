@@ -30,7 +30,7 @@ data class CharacterUIModel(
     val characterName: String,
     val patronus: String,
     val wandCore: String,
-):Parcelable
+) : Parcelable
 
 fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
     val unknown = "Unknown"
@@ -64,46 +64,45 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
             else -> R.string.not_a_student_or_stuff
         }
 
-        val houseDrawableId = when (it.house) {
+        val (houseDrawableId, houseColorId) = when (it.house) {
             "Gryffindor" -> {
-                R.drawable.ic_gryffindor
+                Pair(
+                    R.drawable.ic_gryffindor,
+                    R.color.gryffindor_red
+                )
             }
             "Slytherin" -> {
-                R.drawable.ic_slytherin
+                Pair(
+                    R.drawable.ic_slytherin,
+                    R.color.slytherin_green
+                )
             }
             "Hufflepuff" -> {
-                R.drawable.ic_hufflepuff
+                Pair(
+                    R.drawable.ic_hufflepuff,
+                    R.color.hufflepuff_yellow
+                )
             }
             "Ravenclaw" -> {
-                R.drawable.ic_ravenclaw
+                Pair(
+                    R.drawable.ic_ravenclaw,
+                    R.color.ravenclaw_blue
+                )
             }
             else -> {
-                R.drawable.ic_hp
-            }
-        }
-
-        val houseColorId = when (it.house) {
-            "Gryffindor" -> {
-                R.color.gryffindor_red
-            }
-            "Slytherin" -> {
-                R.color.slytherin_green
-            }
-            "Hufflepuff" -> {
-                R.color.hufflepuff_yellow
-            }
-            "Ravenclaw" -> {
-                R.color.ravenclaw_blue
-            }
-            else -> {
-                R.color.bg_main
+                Pair(
+                    R.drawable.ic_hp,
+                    R.color.bg_main
+                )
             }
         }
 
         val image = if (it.image?.isEmpty() == true) null else it.image
         val characterName = if (it.name.isNullOrEmpty()) unknown else it.name.toFirstCharUpperCase()
-        val patronus = if (it.patronus.isNullOrEmpty()) unknown else it.patronus.toFirstCharUpperCase()
-        val wandCore = if (it.wand?.core.isNullOrEmpty()) unknown else it.wand?.core!!.toFirstCharUpperCase()
+        val patronus =
+            if (it.patronus.isNullOrEmpty()) unknown else it.patronus.toFirstCharUpperCase()
+        val wandCore =
+            if (it.wand?.core.isNullOrEmpty()) unknown else it.wand?.core!!.toFirstCharUpperCase()
 
         CharacterUIModel(
             id,
