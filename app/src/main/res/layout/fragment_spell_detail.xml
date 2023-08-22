@@ -59,7 +59,7 @@
                 android:layout_marginHorizontal="@dimen/margin_32"
                 android:layout_marginTop="@dimen/margin_16"
                 android:background="@drawable/shape_detail_info_item_background"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="@dimen/padding_16"
                 app:layout_constraintBottom_toTopOf="@id/llGeneralInfo"
                 app:layout_constraintEnd_toEndOf="parent"
