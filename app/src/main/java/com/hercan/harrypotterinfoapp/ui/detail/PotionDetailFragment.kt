@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hercan.harrypotterinfoapp.R
@@ -41,6 +42,20 @@ class PotionDetailFragment : Fragment(R.layout.fragment_potion_detail) {
         viewModel.potion.observe(viewLifecycleOwner) {
             potion = it
             bindUI()
+        }
+
+        viewModel.isOnLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.constraintLayoutDetail.visibility = View.GONE
+                binding.animationView.visibility= View.VISIBLE
+            } else {
+                binding.constraintLayoutDetail.visibility = View.VISIBLE
+                binding.animationView.visibility = View.GONE
+            }
+        }
+
+        viewModel.isOnError.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
     }
 
