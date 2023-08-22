@@ -29,6 +29,7 @@
     <string name="ic_house">Character house information</string>
     <string name="iv_spell_or_potion_photo">Spell or potion photo</string>
     <string name="iv_potion_photo">Potion photo</string>
+    <string name="iv_spell_photo">Spell photo</string>
 
     <!-- Character Detail Fragment XML -->
     <string name="alternative_names_header">Alternative Names:</string>
@@ -42,14 +43,22 @@
     <!-- Potion Detail Fragment XML -->
     <string name="inventors_header">Inventors:</string>
     <string name="manufacturers_header">Manufacturers:</string>
-    <string name="effect_header">Effect:</string>
     <string name="side_effect_header">Side Effect:</string>
     <string name="characteristics_header">Characteristics:</string>
     <string name="time_header">Time:</string>
     <string name="difficulty_header">Difficulty:</string>
-    <string name="wikipedia">Wikipedia</string>
     <string name="ingredients_header">Ingredients:</string>
 
     <string name="unknown">Unknown</string>
 
+    <!--Potion and Spell Fragment Common Strings-->
+    <string name="effect_header">Effect:</string>
+    <string name="wikipedia">Wikipedia</string>
+
+    <!-- Spell Detail Fragment XML -->
+    <string name="incantation_header">Incantation:</string>
+    <string name="creator_header">Creator:</string>
+    <string name="category_header">Category:</string>
+    <string name="light_header">Light:</string>
+    <string name="hand_header">Hand:</string>
 </resources>
