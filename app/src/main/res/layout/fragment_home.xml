@@ -47,7 +47,7 @@
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
                 android:id="@+id/rvCharacter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
                 android:id="@+id/rvPotion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/black" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
                 android:id="@+id/rvSpell"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
