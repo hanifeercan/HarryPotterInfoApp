@@ -74,28 +74,27 @@
 
                     <TextView
                         style="@style/Text.T2"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/inventors_header" />
+                        android:paddingEnd="@dimen/padding_8"
+                        android:text="@string/inventors_header"
+                        tools:ignore="RtlSymmetry" />
 
                     <TextView
                         android:id="@+id/tvInventors"
                         style="@style/Text.T1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingEnd="@dimen/padding_8"
-                        tools:ignore="RtlSymmetry" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/Text.T2"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingEnd="@dimen/padding_8"
                         android:text="@string/manufacturers_header"
@@ -105,8 +104,7 @@
                         android:id="@+id/tvManufacturers"
                         style="@style/Text.T1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
 
