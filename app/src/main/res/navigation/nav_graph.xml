@@ -46,7 +46,7 @@
         android:label="fragment_potion_detail"
         tools:layout="@layout/fragment_potion_detail">
         <argument
-            android:name="potionID"
+            android:name="potionSlug"
             app:argType="string" />
     </fragment>
     <fragment

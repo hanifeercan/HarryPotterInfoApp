@@ -14,7 +14,7 @@ import com.hercan.harrypotterinfoapp.presentation.adapter.PotionsAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.SpellsAdapter
 import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
 import com.hercan.harrypotterinfoapp.presentation.viewbinding.viewBinding
-import com.hercan.harrypotterinfoapp.viewmodule.HomeViewModel
+import com.hercan.harrypotterinfoapp.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,8 +60,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         potionsAdapter.setItemClickListener {
-            if (it.id != null) {
-                navigateToPotionDetail(it.id)
+            if (it.slug != null) {
+                navigateToPotionDetail(it.slug)
             }
         }
 
@@ -136,8 +136,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
     }
 
-    private fun navigateToPotionDetail(potionID: String) {
-        findNavController().navigate(HomeFragmentDirections.navigateToPotionDetailFragment(potionID))
+    private fun navigateToPotionDetail(potionSlug: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.navigateToPotionDetailFragment(
+                potionSlug
+            )
+        )
     }
 
     private fun navigateToSpellDetail(spellID: String) {
