@@ -55,7 +55,7 @@
         android:label="fragment_spell_detail"
         tools:layout="@layout/fragment_spell_detail">
         <argument
-            android:name="spellID"
+            android:name="spellSlug"
             app:argType="string" />
     </fragment>
 </navigation>

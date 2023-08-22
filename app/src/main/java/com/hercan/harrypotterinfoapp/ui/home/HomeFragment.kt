@@ -66,8 +66,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         spellsAdapter.setItemClickListener {
-            if (it.id != null) {
-                navigateToSpellDetail(it.id)
+            if (it.slug != null) {
+                navigateToSpellDetail(it.slug)
             }
         }
     }
@@ -144,7 +144,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
     }
 
-    private fun navigateToSpellDetail(spellID: String) {
-        findNavController().navigate(HomeFragmentDirections.navigateToSpellDetailFragment(spellID))
+    private fun navigateToSpellDetail(spellSlug: String) {
+        findNavController().navigate(HomeFragmentDirections.navigateToSpellDetailFragment(spellSlug))
     }
 }
