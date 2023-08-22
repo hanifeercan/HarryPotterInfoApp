@@ -1,6 +1,7 @@
 package com.hercan.harrypotterinfoapp.network.datasource.potterdb
 
 import com.hercan.harrypotterinfoapp.network.api.PotterDBApi
+import com.hercan.harrypotterinfoapp.network.model.potion.PotionDetailModel
 import com.hercan.harrypotterinfoapp.network.model.potion.PotionModel
 import com.hercan.harrypotterinfoapp.network.model.spell.SpellModel
 import retrofit2.Response
@@ -15,5 +16,9 @@ class PotterDBDataSourceImpl @Inject constructor(private val api: PotterDBApi) :
 
     override suspend fun getAllSpells(): Response<SpellModel> {
         return api.getAllSpells()
+    }
+
+    override suspend fun getPotionWithSlug(slug: String): Response<PotionDetailModel> {
+        return api.getPotionWithSlug(slug)
     }
 }
