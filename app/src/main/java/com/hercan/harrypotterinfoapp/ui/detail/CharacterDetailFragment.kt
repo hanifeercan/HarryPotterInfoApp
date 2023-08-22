@@ -56,7 +56,6 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
 
             if (getString(it.typeId) == getString(R.string.wizard)) {
                 tvPatronus.text = it.patronus
-
                 tvWandCore.text = it.wandCore
             } else {
                 tvHeaderPatronus.visibility = View.GONE
