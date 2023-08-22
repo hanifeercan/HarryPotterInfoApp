@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class Attributes(
     @SerializedName("characteristics")
     val characteristics: String?,
+    @SerializedName("slug")
+    val slug: String?,
     @SerializedName("difficulty")
     val difficulty: String?,
     @SerializedName("effect")

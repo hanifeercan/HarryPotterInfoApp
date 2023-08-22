@@ -5,6 +5,7 @@ import com.hercan.harrypotterinfoapp.network.model.potion.PotionData
 data class PotionUIModel(
     val id: String?,
     val characteristics: String,
+    val slug: String?,
     val difficulty: String,
     val effect: String,
     val image: String?,
@@ -22,6 +23,7 @@ fun PotionData?.toPotionUIModel(): PotionUIModel? {
     return this?.let {
         val id = this.id
         val characteristics = this.attributes?.characteristics ?: unknown
+        val slug = this.attributes?.slug
         val difficulty = this.attributes?.difficulty ?: unknown
         val effect = this.attributes?.effect ?: unknown
         val image = this.attributes?.image
@@ -35,6 +37,7 @@ fun PotionData?.toPotionUIModel(): PotionUIModel? {
         return PotionUIModel(
             id,
             characteristics,
+            slug,
             difficulty,
             effect,
             image,
