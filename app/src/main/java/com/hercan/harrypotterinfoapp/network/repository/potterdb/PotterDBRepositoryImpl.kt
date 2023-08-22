@@ -3,6 +3,7 @@ package com.hercan.harrypotterinfoapp.network.repository.potterdb
 import com.hercan.harrypotterinfoapp.network.datasource.potterdb.PotterDBDataSource
 import com.hercan.harrypotterinfoapp.network.model.potion.PotionDetailModel
 import com.hercan.harrypotterinfoapp.network.model.potion.PotionModel
+import com.hercan.harrypotterinfoapp.network.model.spell.SpellDetailModel
 import com.hercan.harrypotterinfoapp.network.model.spell.SpellModel
 import com.hercan.harrypotterinfoapp.network.utils.NetworkExt
 import com.hercan.harrypotterinfoapp.network.utils.Resource
@@ -29,6 +30,12 @@ class PotterDBRepositoryImpl @Inject constructor(
     override fun getPotionWithSlug(slug: String): Flow<Resource<PotionDetailModel>> {
         return flow {
             emit(safeApiCall { dataSource.getPotionWithSlug(slug) })
+        }
+    }
+
+    override fun getSpellWithSlug(slug: String): Flow<Resource<SpellDetailModel>> {
+        return flow {
+            emit(safeApiCall { dataSource.getSpellWithSlug(slug) })
         }
     }
 }
