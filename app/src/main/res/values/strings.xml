@@ -65,4 +65,5 @@
     <!-- Favorite Type -->
     <string name="character">character</string>
     <string name="potion">potion</string>
+    <string name="spell">spell</string>
 </resources>
