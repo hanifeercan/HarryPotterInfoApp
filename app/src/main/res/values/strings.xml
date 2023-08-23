@@ -61,4 +61,7 @@
     <string name="category_header">Category:</string>
     <string name="light_header">Light:</string>
     <string name="hand_header">Hand:</string>
+
+    <!-- Favorite Type -->
+    <string name="character">character</string>
 </resources>
