@@ -12,6 +12,7 @@ import com.hercan.harrypotterinfoapp.presentation.adapter.CharactersAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.PotionsAdapter
 import com.hercan.harrypotterinfoapp.presentation.adapter.SpellsAdapter
 import com.hercan.harrypotterinfoapp.presentation.model.CharacterUIModel
+import com.hercan.harrypotterinfoapp.presentation.room.FavoriteDatabase
 import com.hercan.harrypotterinfoapp.presentation.viewbinding.viewBinding
 import com.hercan.harrypotterinfoapp.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,9 +22,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels()
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val charactersAdapter = CharactersAdapter()
-    private val potionsAdapter = PotionsAdapter()
-    private val spellsAdapter = SpellsAdapter()
+    private lateinit var charactersAdapter: CharactersAdapter
+    private lateinit var potionsAdapter: PotionsAdapter
+    private lateinit var spellsAdapter: SpellsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +34,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun bindUI() = with(binding) {
+
+        val favoriteDB = FavoriteDatabase.getInstance(requireContext())
+        charactersAdapter = CharactersAdapter(favoriteDB)
+        potionsAdapter = PotionsAdapter(favoriteDB)
+        spellsAdapter = SpellsAdapter(favoriteDB)
+
         rvCharacter.apply {
             adapter = charactersAdapter
             set3DItem(true)
