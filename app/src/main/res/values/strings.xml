@@ -22,6 +22,21 @@
     <string name="potions">POTIONS</string>
     <string name="spells">SPELLS</string>
 
+    <string name="all">All</string>
+    <string name="gryffindor">Gryffindor</string>
+    <string name="slytherin">Slytherin</string>
+    <string name="hufflepuff">Hufflepuff</string>
+    <string name="ravenclaw">Ravenclaw</string>
+
+    <string-array name="character_filter_array">
+        <item>@string/all</item>
+        <item>@string/gryffindor</item>
+        <item>@string/slytherin</item>
+        <item>@string/hufflepuff</item>
+        <item>@string/ravenclaw</item>
+        <item>@string/unknown</item>
+    </string-array>
+
     <!-- Image Content Descriptions-->
     <string name="ic_harry_potter">Harry Potter icon</string>
     <string name="iv_character_photo">Character photo</string>
