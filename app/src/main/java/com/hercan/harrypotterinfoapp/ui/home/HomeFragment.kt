@@ -1,7 +1,10 @@
 package com.hercan.harrypotterinfoapp.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -33,8 +36,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         observeViewModelData()
     }
 
-    private fun bindUI() = with(binding) {
+    @SuppressLint("NotifyDataSetChanged")
+    private fun bindSpinner() = with(binding) {
 
+        val characterFilterArray = resources.getStringArray(R.array.character_filter_array)
+        val spinner = spinnerCharacter
+        val spinnerAdapter =
+            ArrayAdapter(requireContext(), R.layout.item_spinner, characterFilterArray)
+        spinner.adapter = spinnerAdapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?, position: Int, id: Long
+            ) {
+
+                charactersAdapter.submitList(listOf())
+                charactersAdapter.notifyDataSetChanged()
+                viewModel.getCharacters(characterFilterArray[position].toString())
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // write code to perform some action
+            }
+        }
+    }
+
+    private fun bindUI() = with(binding) {
         val favoriteDB = FavoriteDatabase.getInstance(requireContext())
         charactersAdapter = CharactersAdapter(favoriteDB)
         potionsAdapter = PotionsAdapter(favoriteDB)
@@ -61,6 +89,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             setInfinite(true)
         }
 
+        bindSpinner()
+
         charactersAdapter.setItemClickListener {
             navigateToCharacterDetail(it)
         }
@@ -78,10 +108,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun observeViewModelData() = with(binding) {
         viewModel.characters.observe(viewLifecycleOwner) {
             if (it != null) {
+                charactersAdapter.notifyDataSetChanged()
                 charactersAdapter.submitList(it)
+                // charactersAdapter.notifyDataSetChanged()
             }
         }
 
@@ -94,7 +127,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorCharacters.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it ?: "error", Toast.LENGTH_LONG).show()
         }
 
         viewModel.potions.observe(viewLifecycleOwner) {
@@ -112,7 +145,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorPotions.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it ?: "error", Toast.LENGTH_LONG).show()
         }
 
         viewModel.spells.observe(viewLifecycleOwner) {
@@ -130,7 +163,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.isOnErrorSpells.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it ?: "error", Toast.LENGTH_LONG).show()
         }
     }
 
