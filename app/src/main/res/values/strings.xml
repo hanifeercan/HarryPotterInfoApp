@@ -81,4 +81,6 @@
     <string name="character">character</string>
     <string name="potion">potion</string>
     <string name="spell">spell</string>
+
+    <string name="not_connect_message">Check your internet connection</string>
 </resources>
