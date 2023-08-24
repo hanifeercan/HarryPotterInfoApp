@@ -13,6 +13,7 @@ import com.hercan.harrypotterinfoapp.network.utils.Status
 import com.hercan.harrypotterinfoapp.presentation.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -58,11 +59,21 @@ class HomeViewModel @Inject constructor(
         getSpells()
     }
 
-    private fun getCharacters() {
+    fun getCharacters(house: String? = null) {
         viewModelScope.launch {
             repository.getAllCharacters()
                 .onStart {
                     _isOnLoadingCharacters.postValue(true)
+                }.map {
+                    it.data?.filter { characterModel ->
+                        if (house == null || house == "All") {
+                            characterModel.house != null
+                        } else if (house == "Unknown") {
+                            characterModel.house == ""
+                        } else {
+                            characterModel.house == house
+                        }
+                    }
                 }
                 .onCompletion {
                     _isOnLoadingCharacters.postValue(false)
@@ -70,10 +81,8 @@ class HomeViewModel @Inject constructor(
                     _isOnErrorCharacters.postValue(it.localizedMessage)
                 }
                 .collect {
-                    if (it.status == Status.SUCCESS) {
-                        val characters = it.data?.map(CharacterModel::toCharacterUIModel)
-                        _characters.postValue(characters)
-                    }
+                    val characters = it?.map(CharacterModel::toCharacterUIModel)
+                    _characters.postValue(characters)
                 }
         }
     }
