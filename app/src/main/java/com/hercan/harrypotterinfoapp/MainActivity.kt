@@ -6,8 +6,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.hercan.harrypotterinfoapp.databinding.ActivityMainBinding
-import com.hercan.harrypotterinfoapp.network.checkconnect.ConnectViewModel
 import com.hercan.harrypotterinfoapp.presentation.viewbinding.viewBinding
+import com.hercan.harrypotterinfoapp.viewmodel.ActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.collectLatest
 class MainActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
-    private val viewModel: ConnectViewModel by viewModels()
+    private val viewModel: ActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,5 @@ class MainActivity : AppCompatActivity() {
     private fun notConnected() {
         val message = getString(R.string.not_connect_message)
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        finish()
     }
 }
