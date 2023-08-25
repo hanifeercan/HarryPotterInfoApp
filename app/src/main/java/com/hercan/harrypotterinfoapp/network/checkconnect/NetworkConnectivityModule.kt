@@ -11,12 +11,11 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object ConnectModule {
+object NetworkConnectivityModule {
 
     @Provides
     @Singleton
     fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
         return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
-
 }

@@ -8,7 +8,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
-class ConnectNetwork @Inject constructor(connectivityManager: ConnectivityManager) {
+class NetworkConnectivityMonitor @Inject constructor(connectivityManager: ConnectivityManager) {
 
     val isConnected = callbackFlow {
 
