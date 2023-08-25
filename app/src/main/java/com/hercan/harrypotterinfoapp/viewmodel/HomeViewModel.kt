@@ -9,8 +9,10 @@ import com.hercan.harrypotterinfoapp.network.model.potion.PotionData
 import com.hercan.harrypotterinfoapp.network.model.spell.SpellData
 import com.hercan.harrypotterinfoapp.network.repository.characters.CharactersRepositoryImpl
 import com.hercan.harrypotterinfoapp.network.repository.potterdb.PotterDBRepositoryImpl
+import com.hercan.harrypotterinfoapp.network.utils.Resource
 import com.hercan.harrypotterinfoapp.network.utils.Status
 import com.hercan.harrypotterinfoapp.presentation.model.*
+import com.hercan.harrypotterinfoapp.presentation.room.model.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -53,10 +55,25 @@ class HomeViewModel @Inject constructor(
     private val _isOnErrorSpells: MutableLiveData<String> = MutableLiveData()
     val isOnErrorSpells: LiveData<String> = _isOnErrorSpells
 
+    private val _allFavoriteCharacters: MutableLiveData<List<FavoriteCharacterModel>> =
+        MutableLiveData()
+    val allFavoriteCharacters: LiveData<List<FavoriteCharacterModel>> = _allFavoriteCharacters
+
+    private val _allFavoritePotions: MutableLiveData<List<FavoritePotionModel>> =
+        MutableLiveData()
+    val allFavoritePotions: LiveData<List<FavoritePotionModel>> = _allFavoritePotions
+
+    private val _allFavoriteSpells: MutableLiveData<List<FavoriteSpellModel>> =
+        MutableLiveData()
+    val allFavoriteSpells: LiveData<List<FavoriteSpellModel>> = _allFavoriteSpells
+
     init {
         getCharacters()
         getPotions()
         getSpells()
+        getFavoriteCharacters()
+        getFavoritePotions()
+        getFavoriteSpells()
     }
 
     fun getCharacters(house: String? = null) {
@@ -65,15 +82,20 @@ class HomeViewModel @Inject constructor(
                 .onStart {
                     _isOnLoadingCharacters.postValue(true)
                 }.map {
-                    it.data?.filter { characterModel ->
-                        if (house == null || house == "All") {
-                            characterModel.house != null
-                        } else if (house == "Unknown") {
-                            characterModel.house == ""
-                        } else {
-                            characterModel.house == house
+                    val filteredList = it.data?.filter { characterModel ->
+                        when (house) {
+                            null, "All" -> {
+                                characterModel.house != null
+                            }
+                            "Unknown" -> {
+                                characterModel.house == ""
+                            }
+                            else -> {
+                                characterModel.house == house
+                            }
                         }
                     }
+                    return@map Resource.success(filteredList)
                 }
                 .onCompletion {
                     _isOnLoadingCharacters.postValue(false)
@@ -81,9 +103,62 @@ class HomeViewModel @Inject constructor(
                     _isOnErrorCharacters.postValue(it.localizedMessage)
                 }
                 .collect {
-                    val characters = it?.map(CharacterModel::toCharacterUIModel)
-                    _characters.postValue(characters)
+                    if (it.status == Status.SUCCESS) {
+                        val characters = it.data?.map(CharacterModel::toCharacterUIModel)
+                        _characters.postValue(characters)
+                    }
                 }
+        }
+    }
+
+    fun insertFavoriteCharacter(characterUIModel: CharacterUIModel, isFavorite: Boolean) =
+        viewModelScope.launch {
+            repository.insert(characterUIModel.toFavoriteCharacterModel(isFavorite))
+        }
+
+    fun updateFavoriteCharacter(id: String, isFavorite: Boolean) = viewModelScope.launch {
+        repository.update(id, isFavorite)
+    }
+
+    fun insertFavoritePotion(potionUIModel: PotionUIModel, isFavorite: Boolean) =
+        viewModelScope.launch {
+            potterRepository.insertPotion(potionUIModel.toFavoritePotionModel(isFavorite))
+        }
+
+    fun updateFavoritePotion(id: String, isFavorite: Boolean) = viewModelScope.launch {
+        potterRepository.updatePotion(id, isFavorite)
+    }
+
+    fun insertFavoriteSpell(spellUIModel: SpellUIModel, isFavorite: Boolean) =
+        viewModelScope.launch {
+            potterRepository.insertSpell(spellUIModel.toFavoriteSpellModel(isFavorite))
+        }
+
+    fun updateFavoriteSpell(id: String, isFavorite: Boolean) = viewModelScope.launch {
+        potterRepository.updateSpell(id, isFavorite)
+    }
+
+    fun getFavoriteCharacters() {
+        viewModelScope.launch {
+            repository.allFavoriteCharacters.collect {
+                _allFavoriteCharacters.postValue(it)
+            }
+        }
+    }
+
+    fun getFavoritePotions() {
+        viewModelScope.launch {
+            potterRepository.allFavoritePotions.collect {
+                _allFavoritePotions.postValue(it)
+            }
+        }
+    }
+
+    fun getFavoriteSpells() {
+        viewModelScope.launch {
+            potterRepository.allFavoriteSpells.collect {
+                _allFavoriteSpells.postValue(it)
+            }
         }
     }
 
