@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".ui.detail.SpellDetailFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_spell" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="@dimen/padding_16">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/icHarryPotter"
+                android:layout_width="@dimen/size_48"
+                android:layout_height="@dimen/size_48"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:background="@drawable/ic_hp"
+                android:contentDescription="@string/ic_harry_potter"
+                app:layout_constraintBottom_toTopOf="@id/ivPhoto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivPhoto"
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200"
+                android:contentDescription="@string/iv_spell_photo"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icHarryPotter" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/Text.T3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:gravity="center"
+                android:text="@string/name"
+                app:layout_constraintBottom_toTopOf="@id/llCreator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
+
+            <LinearLayout
+                android:id="@+id/llCreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/shape_detail_info_item_background"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_16"
+                app:layout_constraintBottom_toTopOf="@id/llGeneralInfo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName">
+
+                <TextView
+                    style="@style/Text.T2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/creator_header" />
+
+                <TextView
+                    android:id="@+id/tvCreator"
+                    style="@style/Text.T1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/padding_8"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llGeneralInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/shape_detail_info_item_background"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llCreator">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_8">
+
+                    <TextView
+                        style="@style/Text.T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/padding_4"
+                        android:text="@string/incantation_header"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvIncantation"
+                        style="@style/Text.T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_8">
+
+                    <TextView
+                        style="@style/Text.T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/padding_4"
+                        android:text="@string/effect_header"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvEffect"
+                        style="@style/Text.T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
+
+                    <TextView
+                        style="@style/Text.T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/padding_8"
+                        android:text="@string/category_header"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvCategory"
+                        style="@style/Text.T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
+
+                    <TextView
+                        style="@style/Text.T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/padding_8"
+                        android:text="@string/light_header"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvLight"
+                        style="@style/Text.T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/padding_4">
+
+                    <TextView
+                        style="@style/Text.T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/padding_8"
+                        android:text="@string/hand_header"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvHand"
+                        style="@style/Text.T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnWikipedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/shape_detail_info_item_background"
+                android:text="@string/wikipedia"
+                android:textAppearance="@style/Text.T3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llGeneralInfo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
