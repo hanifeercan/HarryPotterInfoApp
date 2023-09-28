@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text">
+        <item name="fontFamily">@font/metal_mania_regular</item>
+        <item name="android:fontFamily">@font/metal_mania_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Text.T1" parent="Text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+    <style name="Text.T2" parent="Text">
+        <item name="android:textSize">@dimen/text_size_20</item>
+    </style>
+
+    <style name="Text.T3" parent="Text">
+        <item name="android:textSize">@dimen/text_size_24</item>
+    </style>
+
+</resources>
